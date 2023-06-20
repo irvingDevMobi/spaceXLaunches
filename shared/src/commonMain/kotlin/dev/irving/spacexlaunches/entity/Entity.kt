@@ -10,7 +10,7 @@ import kotlinx.serialization.Serializable
 data class RocketLaunch(
     @SerialName("flight_number") val flightNumber: Int,
     @SerialName("name") val missionName: String,
-    @SerialName("data_utc") val launchDateUTC: String,
+    @SerialName("date_utc") val launchDateUTC: String,
     val details: String?,
     @SerialName("success") val launchSuccess: Boolean?,
     val links: Links
