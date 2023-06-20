@@ -11,8 +11,8 @@ data class RocketLaunch(
     @SerialName("flight_number") val flightNumber: Int,
     @SerialName("name") val missionName: String,
     @SerialName("data_utc") val launchDateUTC: String,
-    val details: String,
-    @SerialName("success") val launchSuccess: Boolean,
+    val details: String?,
+    @SerialName("success") val launchSuccess: Boolean?,
     val links: Links
 ) {
     var launchYear = launchDateUTC.toInstant().toLocalDateTime(TimeZone.UTC).year
@@ -21,7 +21,7 @@ data class RocketLaunch(
 @Serializable
 data class Links(
     val patch: Patch?,
-    val article: String
+    val article: String?
 )
 
 @Serializable
