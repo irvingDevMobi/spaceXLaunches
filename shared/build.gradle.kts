@@ -1,6 +1,7 @@
 plugins {
     kotlin("multiplatform")
     id("com.android.library")
+    // TODO 4: add plugins
     kotlin("plugin.serialization") version "1.8.22"
     id("com.squareup.sqldelight")
 }
@@ -35,6 +36,7 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
+                // TODO 1: Add common dependencies (core artifact)
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion")
                 implementation("io.ktor:ktor-client-core:$ktorVersion")
                 implementation("io.ktor:ktor-client-content-negotiation:$ktorVersion")
@@ -51,12 +53,14 @@ kotlin {
         }
         val androidMain by getting {
             dependencies {
+                // TODO 2: Add android dependencies
                 implementation("io.ktor:ktor-client-android:$ktorVersion")
                 implementation("com.squareup.sqldelight:android-driver:$sqlDelightVersion")
             }
         }
         val iosMain by getting {
             dependencies {
+                // TODO 3: Add iOS dependencies
                 implementation("io.ktor:ktor-client-darwin:$ktorVersion")
                 implementation("com.squareup.sqldelight:native-driver:$sqlDelightVersion")
             }
@@ -72,6 +76,7 @@ android {
     }
 }
 
+// TODO 8: configure SQLDelight 
 sqldelight {
     database("AppDataBase") {
         packageName = "dev.irving.spacexlaunches.cache"

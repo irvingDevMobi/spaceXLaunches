@@ -8,6 +8,7 @@ import io.ktor.client.request.get
 import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
 
+// TODO 14: Create a class that will connect the application to the API
 class SpaceXApi {
     private val httpClient = HttpClient {
         install(ContentNegotiation) {

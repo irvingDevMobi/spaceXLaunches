@@ -2,10 +2,12 @@ import SwiftUI
 import shared
 
 struct ContentView: View {
+    // The @ObservedObject property wrapper is used to subscribe to the view model.
     @ObservedObject private(set) var viewModel: ViewModel
 
 	var body: some View {
         NavigationView {
+            // TODO 21: Implement the body of the ContentView file and display the list of launches
             listView()
                 .navigationBarTitle("SpaceX Launches")
                 .navigationBarItems(
@@ -32,6 +34,8 @@ struct ContentView: View {
     }
 }
 
+// TODO 20: create ViewModel class for the ContentView
+// The Combine framework connects the view model (ContentView.ViewModel) with the view (ContentView).
 extension ContentView {
     enum LoadableLaunches {
         case loading
@@ -63,4 +67,6 @@ extension ContentView {
     }
 }
 
+// TODO 22: To make it compile, the RocketLaunch class needs to confirm the Identifiable protocol,
+// as it is used as a parameter for initializing the List Swift UIView.
 extension RocketLaunch: Identifiable { }

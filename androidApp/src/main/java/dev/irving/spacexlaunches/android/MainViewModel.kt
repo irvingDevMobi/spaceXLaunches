@@ -11,6 +11,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
+// TODO 18: Implement ViewModel and use common repository
 class MainViewModel(
     private val sdk: SpaceXSdk
 ) : ViewModel() {

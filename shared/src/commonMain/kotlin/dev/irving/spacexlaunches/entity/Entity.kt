@@ -6,6 +6,7 @@ import kotlinx.datetime.toLocalDateTime
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
+// TODO 7: add entity data classes
 @Serializable
 data class RocketLaunch(
     @SerialName("flight_number") val flightNumber: Int,

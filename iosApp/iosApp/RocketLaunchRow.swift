@@ -9,6 +9,7 @@
 import SwiftUI
 import shared
 
+// TODO 19: create iOS UI
 struct RocketLaunchRow: View {
     var rocketLaunch: RocketLaunch
     

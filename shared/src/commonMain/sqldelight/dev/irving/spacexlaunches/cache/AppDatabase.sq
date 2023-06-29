@@ -1,3 +1,6 @@
+-- TODO 9: Create AppDatabase.sq file in the correct package and add sql statements
+-- more info about SQLDelight https://cashapp.github.io/sqldelight/2.0.0-rc02/multiplatform_sqlite/types/
+
 CREATE TABLE Launch(
     flightNumber INTEGER NOT NULL,
     missionName TEXT NOT NULL,

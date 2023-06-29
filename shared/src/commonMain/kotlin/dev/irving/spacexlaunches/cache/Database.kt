@@ -4,6 +4,7 @@ import dev.irving.spacexlaunches.entity.Links
 import dev.irving.spacexlaunches.entity.Patch
 import dev.irving.spacexlaunches.entity.RocketLaunch
 
+// TODO 13: Create common database class
 internal class Database(
     databaseDriverFactory: DatabaseDriverFactory
 ) {
@@ -16,6 +17,31 @@ internal class Database(
 
     internal fun getAllLaunches(): List<RocketLaunch> {
         return dbQuery.selectAllLaunchesInfo(::mapLaunchSelecting).executeAsList()
+    }
+
+    internal fun createLaunches(
+        launches: List<RocketLaunch>
+    ) {
+        dbQuery.transaction {
+            launches.forEach { launch ->
+                insertLaunch(launch)
+            }
+        }
+    }
+
+    private fun insertLaunch(
+        launch: RocketLaunch
+    ) {
+        dbQuery.insertLaunch(
+            flightNumber = launch.flightNumber.toLong(),
+            missionName = launch.missionName,
+            details = launch.details,
+            launchSuccess = launch.launchSuccess ?: false,
+            launchDateUTC = launch.launchDateUTC,
+            patchUrlSmall = launch.links.patch?.small,
+            patchUrlLarge = launch.links.patch?.large,
+            articleUrl = launch.links.article
+        )
     }
 
     private fun mapLaunchSelecting(
@@ -41,31 +67,6 @@ internal class Database(
                 ),
                 article = articleUrl
             )
-        )
-    }
-
-    internal fun createLaunches(
-        launches: List<RocketLaunch>
-    ) {
-        dbQuery.transaction {
-            launches.forEach { launch ->
-                insertLaunch(launch)
-            }
-        }
-    }
-
-    private fun insertLaunch(
-        launch: RocketLaunch
-    ) {
-        dbQuery.insertLaunch(
-            flightNumber = launch.flightNumber.toLong(),
-            missionName = launch.missionName,
-            details = launch.details,
-            launchSuccess = launch.launchSuccess ?: false,
-            launchDateUTC = launch.launchDateUTC,
-            patchUrlSmall = launch.links.patch?.small,
-            patchUrlLarge = launch.links.patch?.large,
-            articleUrl = launch.links.article
         )
     }
 }

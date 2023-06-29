@@ -5,6 +5,7 @@ import dev.irving.spacexlaunches.cache.DatabaseDriverFactory
 import dev.irving.spacexlaunches.entity.RocketLaunch
 import dev.irving.spacexlaunches.network.SpaceXApi
 
+// TODO 16: Create Repository class to connect remote and local source
 class SpaceXSdk(databaseDriverFactory: DatabaseDriverFactory) {
     private val database = Database(databaseDriverFactory)
     private val api = SpaceXApi()
